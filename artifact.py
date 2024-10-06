@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 import customtkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from CTkTable import *
+import i18n
+import sys
+import os
 
 # 率、ダメ
 CRIT = np.array([54, 62, 70, 78])
@@ -24,6 +27,75 @@ SCORE = 0
 COUNT = 5
 # GUIフォント
 FONT_TYPE = "meiryo"
+# 言語
+LANGUAGE = "en"
+
+class AppLanguage(tk.CTk):
+
+    def __init__(self):
+        super().__init__()
+
+        # メンバー変数の設定
+        self.fonts = (FONT_TYPE, 15)
+        # フォームサイズ設定
+        self.geometry("350x200")
+        self.title("Basic GUI")
+
+        # フォームのセットアップをする
+        self.setup_form()
+    
+    def setup_form(self):
+        # tk のフォームデザイン設定
+        tk.set_appearance_mode("dark")  # Modes: system (default), light, dark
+        tk.set_default_color_theme("blue")  # Themes: blue (default), dark-blue, green
+
+        # フォームサイズ設定
+        self.geometry("600x400")
+        self.title("Artifact distribution")
+
+        # 行方向のマスのレイアウトを設定する。リサイズしたときに一緒に拡大したい行をweight 1に設定。
+        self.grid_rowconfigure(0, weight=1)
+        # 列方向のマスのレイアウトを設定する
+        self.grid_columnconfigure(0, weight=1)
+
+        # 1つ目のフレームの設定
+        self.option_frame = LanguageSelect(master=self, header_name="Choose Language")
+        self.option_frame.grid(row=0, column=0, padx=20, pady=20, sticky="ew")
+
+class LanguageSelect(tk.CTkFrame):
+    def __init__(self, *args, header_name="OptionSelect", **kwargs):
+        super().__init__(*args, **kwargs)
+        
+        self.fonts = (FONT_TYPE, 15)
+        self.header_name = header_name
+
+        # フォームのセットアップをする
+        self.setup_form()
+
+    def setup_form(self):
+        # 行方向のマスのレイアウトを設定する。リサイズしたときに一緒に拡大したい行をweight 1に設定。
+        self.grid_rowconfigure(0, weight=1)
+        # 列方向のマスのレイアウトを設定する
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=1)
+
+        self.label = tk.CTkLabel(self, text=self.header_name, font=(FONT_TYPE, 13))
+        self.label.grid(row=0, column=0, padx=20, sticky="ew")
+
+        # 言語選択
+        self.count = tk.CTkOptionMenu(master=self, font=self.fonts, values=["English", "Japanese"], command=self.language_function)
+        self.count.grid(row=1, column=0, padx=20, pady=(0,20), sticky="ew")
+
+        # クローズボタン
+        self.close_button = tk.CTkButton(master=self, text="Choose", command=self.master.destroy, font=self.fonts)
+        self.close_button.grid(row=1, column=2, padx=10, pady=20, sticky="ew")
+
+    def language_function(self, value):
+        global LANGUAGE
+        if value == "English":
+            LANGUAGE = "en"
+        elif value == "Japanese":
+            LANGUAGE = "ja"
 
 class App(tk.CTk):
 
@@ -54,11 +126,11 @@ class App(tk.CTk):
         self.grid_columnconfigure(0, weight=1)
 
         # 1つ目のフレームの設定
-        self.option_frame = OptionSelect(master=self, header_name="オプション選択")
+        self.option_frame = OptionSelect(master=self, header_name=i18n.t("lang.option_select_header"))
         self.option_frame.grid(row=0, column=0, padx=20, pady=20, sticky="ew")
 
         # 2つ目のフレームの設定
-        self.distribution_frame = Distribution(master=self, header_name="確率分布")
+        self.distribution_frame = Distribution(master=self, header_name=i18n.t("lang.distribution_header"))
         self.distribution_frame.grid(row=1, column=0, padx=20, pady=20, sticky="ew")
 
 class OptionSelect(tk.CTkFrame):
@@ -80,26 +152,30 @@ class OptionSelect(tk.CTkFrame):
         self.label = tk.CTkLabel(self, text=self.header_name, font=(FONT_TYPE, 11))
         self.label.grid(row=0, column=0, padx=20, sticky="w")
 
-        self.option_frame = SubOptionSelect(master=self, header_name="サブオプション選択")
+        self.option_frame = SubOptionSelect(master=self, header_name=i18n.t("lang.sub_option_select_header"))
         self.option_frame.grid(row=1, column=0, padx=20, pady=20, sticky="ew")
 
+        # クローズボタン
+        self.close_button = tk.CTkButton(master=self, text=i18n.t("lang.close"), command=sys.exit, font=self.fonts)
+        self.close_button.grid(row=1, column=1, padx=10, pady=20, sticky="ew")
+
         #初期スコア
-        self.init_slider_label = tk.CTkLabel(self, text="初期スコア", font=(FONT_TYPE, 13))
+        self.init_slider_label = tk.CTkLabel(self, text=i18n.t("lang.init_score"), font=(FONT_TYPE, 13))
         self.init_slider_label.grid(row=4, column=0, padx=20, pady=(20,0), sticky="ew")
         self.init_slider = tk.CTkSlider(master=self, from_=0.0, to=40.0, number_of_steps=400, hover=False, width=100, command=self.init_slider_event)
         self.init_slider.grid(row=5, column=0, padx=20, pady=(0,20), sticky="ew")
-        self.init_score = tk.CTkEntry(master=self, placeholder_text="初期値", width=150, font=self.fonts)
+        self.init_score = tk.CTkEntry(master=self, placeholder_text=i18n.t("lang.init_score"), width=150, font=self.fonts)
         self.init_score.grid(row=6, column=0, padx=10, pady=20)
-        self.apply_init_score = tk.CTkButton(master=self, text="Apply", command=self.init_function, font=self.fonts)
+        self.apply_init_score = tk.CTkButton(master=self, text=i18n.t("lang.apply"), command=self.init_function, font=self.fonts)
         self.apply_init_score.grid(row=6, column=1, padx=10, pady=20)
         #調査スコア
-        self.search_slider_label = tk.CTkLabel(self, text="調査スコア", font=(FONT_TYPE, 13))
+        self.search_slider_label = tk.CTkLabel(self, text=i18n.t("lang.search_score"), font=(FONT_TYPE, 13))
         self.search_slider_label.grid(row=7, column=0, padx=20, pady=(20,0), sticky="ew")
         self.search_slider = tk.CTkSlider(master=self, from_=0.0, to=65.0, number_of_steps=650, hover=False, width=100, command=self.search_slider_event)
         self.search_slider.grid(row=8, column=0, padx=20, pady=(0,20), sticky="ew")
-        self.search_score = tk.CTkEntry(master=self, placeholder_text="調査スコア", width=150, font=self.fonts)
+        self.search_score = tk.CTkEntry(master=self, placeholder_text=i18n.t("lang.search_score"), width=150, font=self.fonts)
         self.search_score.grid(row=9, column=0, padx=10, pady=20)
-        self.apply_search_score = tk.CTkButton(master=self, text="Apply", command=self.search_function, font=self.fonts)
+        self.apply_search_score = tk.CTkButton(master=self, text=i18n.t("lang.apply"), command=self.search_function, font=self.fonts)
         self.apply_search_score.grid(row=9, column=1, padx=10, pady=20)
     
     def init_slider_event(self, value):
@@ -164,26 +240,26 @@ class SubOptionSelect(tk.CTkFrame):
         self.grid_columnconfigure(1, weight=1)
         self.grid_columnconfigure(2, weight=1)
 
-        self.init_slider_label = tk.CTkLabel(self, text="初期オプション数", font=(FONT_TYPE, 13))
-        self.init_slider_label.grid(row=0, column=0, padx=10, pady=(20,0), sticky="ew")
+        self.init_option_label = tk.CTkLabel(self, text=i18n.t("lang.init_option"), font=(FONT_TYPE, 13))
+        self.init_option_label.grid(row=0, column=0, padx=10, pady=(20,0), sticky="ew")
 
-        self.init_slider_label = tk.CTkLabel(self, text="サブオプション", font=(FONT_TYPE, 13))
-        self.init_slider_label.grid(row=0, column=1, padx=10, pady=(20,0), sticky="ew")
+        self.sub_option_label = tk.CTkLabel(self, text=i18n.t("lang.sub_option"), font=(FONT_TYPE, 13))
+        self.sub_option_label.grid(row=0, column=1, padx=10, pady=(20,0), sticky="ew")
 
-        self.init_slider_label = tk.CTkLabel(self, text="強化回数", font=(FONT_TYPE, 13))
-        self.init_slider_label.grid(row=0, column=2, padx=10, pady=(20,0), sticky="ew")
+        self.reinforcement_label = tk.CTkLabel(self, text=i18n.t("lang.reinforcement"), font=(FONT_TYPE, 13))
+        self.reinforcement_label.grid(row=0, column=2, padx=10, pady=(20,0), sticky="ew")
 
         # サブオプ数
         self.option_radio = tk.IntVar(value=3)
-        self.option_3 = tk.CTkRadioButton(master=self, text="3オプ", command=self.radio_function, variable=self.option_radio, value=3)
-        self.option_4 = tk.CTkRadioButton(master=self, text="4オプ", command=self.radio_function, variable=self.option_radio, value=4)
+        self.option_3 = tk.CTkRadioButton(master=self, text=i18n.t("lang.3_option"), command=self.radio_function, variable=self.option_radio, value=3)
+        self.option_4 = tk.CTkRadioButton(master=self, text=i18n.t("lang.4_option"), command=self.radio_function, variable=self.option_radio, value=4)
         self.option_3.grid(row=1, column=0, padx=10, pady=(0,10))
         self.option_4.grid(row=2, column=0, padx=10, pady=(0,10))
 
         # サブオプ
-        self.crit_dmg = tk.CTkCheckBox(master=self, text="会心ダメージ", command=self.check_function)
-        self.crit_rate = tk.CTkCheckBox(master=self, text="会心率", command=self.check_function)
-        self.atk = tk.CTkCheckBox(master=self, text="攻撃力%", command=self.check_function)
+        self.crit_dmg = tk.CTkCheckBox(master=self, text=i18n.t("lang.crit_dmg"), command=self.check_function)
+        self.crit_rate = tk.CTkCheckBox(master=self, text=i18n.t("lang.crit_rate"), command=self.check_function)
+        self.atk = tk.CTkCheckBox(master=self, text=i18n.t("lang.atk"), command=self.check_function)
         self.crit_dmg.grid(row=1, column=1, padx=10, pady=(0,10))
         self.crit_rate.grid(row=2, column=1, padx=10, pady=(0,10))
         self.atk.grid(row=3, column=1, padx=10, pady=(0,10))
@@ -209,7 +285,7 @@ class SubOptionSelect(tk.CTkFrame):
         COUNT = int(value)
     
     def check_function(self):
-        global NUMS
+        global NUMS, IS_CRIT_DMG, IS_CRIT_RATE, IS_ATK
         NUMS = np.zeros(16, dtype = int)
         IS_CRIT_DMG = False
         IS_CRIT_RATE = False
@@ -245,12 +321,12 @@ class Distribution(tk.CTkFrame):
         self.label = tk.CTkLabel(self, text=self.header_name, font=(FONT_TYPE, 11))
         self.label.grid(row=0, column=0, padx=20, sticky="w")
 
-        self.outputarea_frame = OutPutArea(master=self, header_name="データ")
+        self.outputarea_frame = OutPutArea(master=self, header_name=i18n.t("lang.out_put_area_header"))
         self.outputarea_frame.grid(row=2, column=1, padx=20, pady=20, sticky="ew")
 
         # 更新ボタン
-        self.update = tk.CTkButton(master=self, text="更新", command=self.update_function, font=self.fonts)
-        self.update.grid(row=1, column=0, padx=10, pady=20)
+        self.update_button = tk.CTkButton(master=self, text=i18n.t("lang.update"), command=self.update_function, font=self.fonts)
+        self.update_button.grid(row=1, column=0, padx=10, pady=20)
 
         self.update_function()
 
@@ -288,11 +364,11 @@ class OutPutArea(tk.CTkFrame):
         # 列方向のマスのレイアウトを設定する
         self.grid_columnconfigure(0, weight=1)
 
-        self.label = tk.CTkLabel(self, text="統計データ", font=(FONT_TYPE, 13))
+        self.label = tk.CTkLabel(self, text=i18n.t("lang.statistics_data"), font=(FONT_TYPE, 13))
         self.label.grid(row=0, column=0, padx=20, sticky="w")
     
     def update_function(self, x, y):
-        percentile = [["順位(%)", "スコア"],
+        percentile = [[i18n.t("lang.percentile_rank"), i18n.t("lang.score")],
          [0, SCORE],
          [0, 0],
          [25, 0],
@@ -309,8 +385,8 @@ class OutPutArea(tk.CTkFrame):
         table = CTkTable(master=self, row=len(percentile), column=2, values=percentile)
         table.grid(row=1,column=0, padx=20, pady=(0, 20), sticky="ew")
 
-        data = [["平均値", 0],
-        ["分散", 0]]
+        data = [[i18n.t("lang.average"), 0],
+        [i18n.t("lang.variance"), 0]]
         ave = 0.0
         for i in range(x.shape[0]):
             ave += (INIT_SCORE + x[i] * COUNT / 10) * y[i]
@@ -386,7 +462,24 @@ class Calculator():
 
             return y
 
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
+def click_close():
+    pass
+
 if __name__ == "__main__":
     # main
+    app_lang = AppLanguage()
+    app_lang.protocol("WM_DELETE_WINDOW", click_close)
+    app_lang.mainloop()
+    i18n.load_path.append(resource_path("locales"))
+    i18n.set("locale", LANGUAGE)
+    i18n.set("fallback", LANGUAGE)
+    i18n.set("file_format", "json")
+    i18n.set("skip_locale_root_data", True)
     app = App()
+    app.protocol("WM_DELETE_WINDOW", click_close)
     app.mainloop()

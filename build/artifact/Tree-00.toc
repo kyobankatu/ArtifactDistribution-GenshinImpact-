@@ -1,0 +1,6 @@
+('locales',
+ 'locales',
+ [],
+ 'DATA',
+ [('locales\\lang.en.json', 'locales\\lang.en.json', 'DATA'),
+  ('locales\\lang.ja.json', 'locales\\lang.ja.json', 'DATA')])

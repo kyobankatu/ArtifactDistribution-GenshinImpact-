@@ -153,6 +153,7 @@ imports:
  &#8226;   <a href="#functools">functools</a>
  &#8226;   <a href="#genericpath">genericpath</a>
  &#8226;   <a href="#heapq">heapq</a>
+ &#8226;   <a href="#i18n">i18n</a>
  &#8226;   <a href="#io">io</a>
  &#8226;   <a href="#keyword">keyword</a>
  &#8226;   <a href="#linecache">linecache</a>
@@ -183,6 +184,7 @@ imports:
  &#8226;   <a href="#sre_constants">sre_constants</a>
  &#8226;   <a href="#sre_parse">sre_parse</a>
  &#8226;   <a href="#stat">stat</a>
+ &#8226;   <a href="#sys">sys</a>
  &#8226;   <a href="#traceback">traceback</a>
  &#8226;   <a href="#types">types</a>
  &#8226;   <a href="#warnings">warnings</a>
@@ -11655,6 +11657,8 @@ imported by:
  &#8226;   <a href="#executing.executing">executing.executing</a>
  &#8226;   <a href="#fastjsonschema.generator">fastjsonschema.generator</a>
  &#8226;   <a href="#functools">functools</a>
+ &#8226;   <a href="#i18n.custom_functions">i18n.custom_functions</a>
+ &#8226;   <a href="#i18n.translator">i18n.translator</a>
  &#8226;   <a href="#importlib.metadata">importlib.metadata</a>
  &#8226;   <a href="#importlib.metadata._collections">importlib.metadata._collections</a>
  &#8226;   <a href="#importlib.resources.readers">importlib.resources.readers</a>
@@ -11825,6 +11829,7 @@ imported by:
  &#8226;   <a href="#cycler">cycler</a>
  &#8226;   <a href="#dbm.dumb">dbm.dumb</a>
  &#8226;   <a href="#http.client">http.client</a>
+ &#8226;   <a href="#i18n.formatters">i18n.formatters</a>
  &#8226;   <a href="#inspect">inspect</a>
  &#8226;   <a href="#jinja2.filters">jinja2.filters</a>
  &#8226;   <a href="#jinja2.loaders">jinja2.loaders</a>
@@ -21979,6 +21984,307 @@ imported by:
 </div>
 
 <div class="node">
+  <a name="i18n"></a>
+  <a target="code" href="///C:/Users/kento/AppData/Local/Programs/Python/Python312/Lib/site-packages/i18n/__init__.py" type="text/plain"><tt>i18n</tt></a>
+<span class="moduletype">Package</span>  <div class="import">
+imports:
+    <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.config">i18n.config</a>
+ &#8226;   <a href="#i18n.custom_functions">i18n.custom_functions</a>
+ &#8226;   <a href="#i18n.errors">i18n.errors</a>
+ &#8226;   <a href="#i18n.formatters">i18n.formatters</a>
+ &#8226;   <a href="#i18n.resource_loader">i18n.resource_loader</a>
+ &#8226;   <a href="#i18n.translations">i18n.translations</a>
+ &#8226;   <a href="#i18n.translator">i18n.translator</a>
+ &#8226;   <a href="#typing">typing</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#artifact.py">artifact.py</a>
+ &#8226;   <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.config">i18n.config</a>
+ &#8226;   <a href="#i18n.custom_functions">i18n.custom_functions</a>
+ &#8226;   <a href="#i18n.errors">i18n.errors</a>
+ &#8226;   <a href="#i18n.formatters">i18n.formatters</a>
+ &#8226;   <a href="#i18n.loaders">i18n.loaders</a>
+ &#8226;   <a href="#i18n.loaders.loader">i18n.loaders.loader</a>
+ &#8226;   <a href="#i18n.resource_loader">i18n.resource_loader</a>
+ &#8226;   <a href="#i18n.translations">i18n.translations</a>
+ &#8226;   <a href="#i18n.translator">i18n.translator</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="i18n.config"></a>
+  <a target="code" href="///C:/Users/kento/AppData/Local/Programs/Python/Python312/Lib/site-packages/i18n/config.py" type="text/plain"><tt>i18n.config</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.formatters">i18n.formatters</a>
+ &#8226;   <a href="#importlib">importlib</a>
+ &#8226;   <a href="#typing">typing</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.formatters">i18n.formatters</a>
+ &#8226;   <a href="#i18n.loaders">i18n.loaders</a>
+ &#8226;   <a href="#i18n.loaders.loader">i18n.loaders.loader</a>
+ &#8226;   <a href="#i18n.resource_loader">i18n.resource_loader</a>
+ &#8226;   <a href="#i18n.translations">i18n.translations</a>
+ &#8226;   <a href="#i18n.translator">i18n.translator</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="i18n.custom_functions"></a>
+  <a target="code" href="///C:/Users/kento/AppData/Local/Programs/Python/Python312/Lib/site-packages/i18n/custom_functions.py" type="text/plain"><tt>i18n.custom_functions</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#collections">collections</a>
+ &#8226;   <a href="#i18n">i18n</a>
+ &#8226;   <a href="#typing">typing</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.formatters">i18n.formatters</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="i18n.errors"></a>
+  <a target="code" href="///C:/Users/kento/AppData/Local/Programs/Python/Python312/Lib/site-packages/i18n/errors.py" type="text/plain"><tt>i18n.errors</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#i18n">i18n</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.formatters">i18n.formatters</a>
+ &#8226;   <a href="#i18n.loaders">i18n.loaders</a>
+ &#8226;   <a href="#i18n.loaders.loader">i18n.loaders.loader</a>
+ &#8226;   <a href="#i18n.resource_loader">i18n.resource_loader</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="i18n.formatters"></a>
+  <a target="code" href="///C:/Users/kento/AppData/Local/Programs/Python/Python312/Lib/site-packages/i18n/formatters.py" type="text/plain"><tt>i18n.formatters</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#collections.abc">collections.abc</a>
+ &#8226;   <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.config">i18n.config</a>
+ &#8226;   <a href="#i18n.custom_functions">i18n.custom_functions</a>
+ &#8226;   <a href="#i18n.errors">i18n.errors</a>
+ &#8226;   <a href="#i18n.resource_loader">i18n.resource_loader</a>
+ &#8226;   <a href="#i18n.translations">i18n.translations</a>
+ &#8226;   <a href="#i18n.translator">i18n.translator</a>
+ &#8226;   <a href="#re">re</a>
+ &#8226;   <a href="#string">string</a>
+ &#8226;   <a href="#typing">typing</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.config">i18n.config</a>
+ &#8226;   <a href="#i18n.resource_loader">i18n.resource_loader</a>
+ &#8226;   <a href="#i18n.translator">i18n.translator</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="i18n.loaders"></a>
+  <a target="code" href="///C:/Users/kento/AppData/Local/Programs/Python/Python312/Lib/site-packages/i18n/loaders/__init__.py" type="text/plain"><tt>i18n.loaders</tt></a>
+<span class="moduletype">Package</span>  <div class="import">
+imports:
+    <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.config">i18n.config</a>
+ &#8226;   <a href="#i18n.errors">i18n.errors</a>
+ &#8226;   <a href="#i18n.loaders">i18n.loaders</a>
+ &#8226;   <a href="#i18n.loaders.json_loader">i18n.loaders.json_loader</a>
+ &#8226;   <a href="#i18n.loaders.loader">i18n.loaders.loader</a>
+ &#8226;   <a href="#i18n.loaders.python_loader">i18n.loaders.python_loader</a>
+ &#8226;   <a href="#i18n.loaders.yaml_loader">i18n.loaders.yaml_loader</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#i18n.loaders">i18n.loaders</a>
+ &#8226;   <a href="#i18n.loaders.json_loader">i18n.loaders.json_loader</a>
+ &#8226;   <a href="#i18n.loaders.loader">i18n.loaders.loader</a>
+ &#8226;   <a href="#i18n.loaders.python_loader">i18n.loaders.python_loader</a>
+ &#8226;   <a href="#i18n.loaders.yaml_loader">i18n.loaders.yaml_loader</a>
+ &#8226;   <a href="#i18n.resource_loader">i18n.resource_loader</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="i18n.loaders.json_loader"></a>
+  <a target="code" href="///C:/Users/kento/AppData/Local/Programs/Python/Python312/Lib/site-packages/i18n/loaders/json_loader.py" type="text/plain"><tt>i18n.loaders.json_loader</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#i18n.loaders">i18n.loaders</a>
+ &#8226;   <a href="#json">json</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#i18n.loaders">i18n.loaders</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="i18n.loaders.loader"></a>
+  <a target="code" href="///C:/Users/kento/AppData/Local/Programs/Python/Python312/Lib/site-packages/i18n/loaders/loader.py" type="text/plain"><tt>i18n.loaders.loader</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.config">i18n.config</a>
+ &#8226;   <a href="#i18n.errors">i18n.errors</a>
+ &#8226;   <a href="#i18n.loaders">i18n.loaders</a>
+ &#8226;   <a href="#io">io</a>
+ &#8226;   <a href="#os.path">os.path</a>
+ &#8226;   <a href="#typing">typing</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#i18n.loaders">i18n.loaders</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="i18n.loaders.python_loader"></a>
+  <a target="code" href="///C:/Users/kento/AppData/Local/Programs/Python/Python312/Lib/site-packages/i18n/loaders/python_loader.py" type="text/plain"><tt>i18n.loaders.python_loader</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#i18n.loaders">i18n.loaders</a>
+ &#8226;   <a href="#importlib">importlib</a>
+ &#8226;   <a href="#importlib.util">importlib.util</a>
+ &#8226;   <a href="#os.path">os.path</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#i18n.loaders">i18n.loaders</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="i18n.loaders.yaml_loader"></a>
+  <a target="code" href="///C:/Users/kento/AppData/Local/Programs/Python/Python312/Lib/site-packages/i18n/loaders/yaml_loader.py" type="text/plain"><tt>i18n.loaders.yaml_loader</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#i18n.loaders">i18n.loaders</a>
+ &#8226;   <a href="#typing">typing</a>
+ &#8226;   <a href="#yaml">yaml</a>
+ &#8226;   <a href="#yaml.loader">yaml.loader</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#i18n.loaders">i18n.loaders</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="i18n.resource_loader"></a>
+  <a target="code" href="///C:/Users/kento/AppData/Local/Programs/Python/Python312/Lib/site-packages/i18n/resource_loader.py" type="text/plain"><tt>i18n.resource_loader</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.config">i18n.config</a>
+ &#8226;   <a href="#i18n.errors">i18n.errors</a>
+ &#8226;   <a href="#i18n.formatters">i18n.formatters</a>
+ &#8226;   <a href="#i18n.loaders">i18n.loaders</a>
+ &#8226;   <a href="#i18n.translations">i18n.translations</a>
+ &#8226;   <a href="#os.path">os.path</a>
+ &#8226;   <a href="#typing">typing</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.formatters">i18n.formatters</a>
+ &#8226;   <a href="#i18n.translator">i18n.translator</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="i18n.translations"></a>
+  <a target="code" href="///C:/Users/kento/AppData/Local/Programs/Python/Python312/Lib/site-packages/i18n/translations.py" type="text/plain"><tt>i18n.translations</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.config">i18n.config</a>
+ &#8226;   <a href="#typing">typing</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.formatters">i18n.formatters</a>
+ &#8226;   <a href="#i18n.resource_loader">i18n.resource_loader</a>
+ &#8226;   <a href="#i18n.translator">i18n.translator</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="i18n.translator"></a>
+  <a target="code" href="///C:/Users/kento/AppData/Local/Programs/Python/Python312/Lib/site-packages/i18n/translator.py" type="text/plain"><tt>i18n.translator</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#collections">collections</a>
+ &#8226;   <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.config">i18n.config</a>
+ &#8226;   <a href="#i18n.formatters">i18n.formatters</a>
+ &#8226;   <a href="#i18n.resource_loader">i18n.resource_loader</a>
+ &#8226;   <a href="#i18n.translations">i18n.translations</a>
+ &#8226;   <a href="#typing">typing</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.formatters">i18n.formatters</a>
+
+  </div>
+
+</div>
+
+<div class="node">
   <a name="idna"></a>
   <a target="code" href="///C:/Users/kento/AppData/Local/Programs/Python/Python312/Lib/site-packages/idna/__init__.py" type="text/plain"><tt>idna</tt></a>
 <span class="moduletype">Package</span>  <div class="import">
@@ -22122,6 +22428,7 @@ imports:
  &#8226;   <a href="#importlib">importlib</a>
  &#8226;   <a href="#importlib._bootstrap">importlib._bootstrap</a>
  &#8226;   <a href="#importlib._bootstrap_external">importlib._bootstrap_external</a>
+ &#8226;   <a href="#importlib.machinery">importlib.machinery</a>
  &#8226;   <a href="#sys">sys</a>
  &#8226;   <a href="#warnings">warnings</a>
 
@@ -22141,6 +22448,8 @@ imported by:
  &#8226;   <a href="#debugpy.common.log">debugpy.common.log</a>
  &#8226;   <a href="#defusedxml.ElementTree">defusedxml.ElementTree</a>
  &#8226;   <a href="#dill">dill</a>
+ &#8226;   <a href="#i18n.config">i18n.config</a>
+ &#8226;   <a href="#i18n.loaders.python_loader">i18n.loaders.python_loader</a>
  &#8226;   <a href="#importlib">importlib</a>
  &#8226;   <a href="#importlib._abc">importlib._abc</a>
  &#8226;   <a href="#importlib._bootstrap">importlib._bootstrap</a>
@@ -22300,6 +22609,7 @@ imported by:
  &#8226;   <a href="#cffi.verifier">cffi.verifier</a>
  &#8226;   <a href="#ctypes.util">ctypes.util</a>
  &#8226;   <a href="#dill._dill">dill._dill</a>
+ &#8226;   <a href="#importlib">importlib</a>
  &#8226;   <a href="#importlib.abc">importlib.abc</a>
  &#8226;   <a href="#inspect">inspect</a>
  &#8226;   <a href="#jedi.inference.compiled.subprocess.functions">jedi.inference.compiled.subprocess.functions</a>
@@ -22699,6 +23009,7 @@ imports:
 imported by:
     <a href="#IPython.external.qt_loaders">IPython.external.qt_loaders</a>
  &#8226;   <a href="#_distutils_hack">_distutils_hack</a>
+ &#8226;   <a href="#i18n.loaders.python_loader">i18n.loaders.python_loader</a>
  &#8226;   <a href="#jinja2.loaders">jinja2.loaders</a>
  &#8226;   <a href="#numpy.testing._private.extbuild">numpy.testing._private.extbuild</a>
  &#8226;   <a href="#pkgutil">pkgutil</a>
@@ -22993,6 +23304,7 @@ imported by:
  &#8226;   <a href="#http.client">http.client</a>
  &#8226;   <a href="#http.cookiejar">http.cookiejar</a>
  &#8226;   <a href="#http.server">http.server</a>
+ &#8226;   <a href="#i18n.loaders.loader">i18n.loaders.loader</a>
  &#8226;   <a href="#importlib.resources._adapters">importlib.resources._adapters</a>
  &#8226;   <a href="#importlib.resources.abc">importlib.resources.abc</a>
  &#8226;   <a href="#ipykernel.iostream">ipykernel.iostream</a>
@@ -27854,6 +28166,7 @@ imported by:
  &#8226;   <a href="#debugpy._version">debugpy._version</a>
  &#8226;   <a href="#debugpy.common.json">debugpy.common.json</a>
  &#8226;   <a href="#fastjsonschema.ref_resolver">fastjsonschema.ref_resolver</a>
+ &#8226;   <a href="#i18n.loaders.json_loader">i18n.loaders.json_loader</a>
  &#8226;   <a href="#ipykernel.connect">ipykernel.connect</a>
  &#8226;   <a href="#ipykernel.kernelspec">ipykernel.kernelspec</a>
  &#8226;   <a href="#jedi.api.project">jedi.api.project</a>
@@ -40666,6 +40979,9 @@ imported by:
  &#8226;   <a href="#IPython.lib.display">IPython.lib.display</a>
  &#8226;   <a href="#IPython.paths">IPython.paths</a>
  &#8226;   <a href="#cffi.ffiplatform">cffi.ffiplatform</a>
+ &#8226;   <a href="#i18n.loaders.loader">i18n.loaders.loader</a>
+ &#8226;   <a href="#i18n.loaders.python_loader">i18n.loaders.python_loader</a>
+ &#8226;   <a href="#i18n.resource_loader">i18n.resource_loader</a>
  &#8226;   <a href="#matplotlib.backends._backend_tk">matplotlib.backends._backend_tk</a>
  &#8226;   <a href="#numpy.core.memmap">numpy.core.memmap</a>
  &#8226;   <a href="#os">os</a>
@@ -54977,6 +55293,7 @@ imported by:
  &#8226;   <a href="#http.client">http.client</a>
  &#8226;   <a href="#http.cookiejar">http.cookiejar</a>
  &#8226;   <a href="#http.cookies">http.cookies</a>
+ &#8226;   <a href="#i18n.formatters">i18n.formatters</a>
  &#8226;   <a href="#idna.core">idna.core</a>
  &#8226;   <a href="#importlib.metadata">importlib.metadata</a>
  &#8226;   <a href="#importlib.metadata._adapters">importlib.metadata._adapters</a>
@@ -63837,6 +64154,7 @@ imported by:
  &#8226;   <a href="#email._header_value_parser">email._header_value_parser</a>
  &#8226;   <a href="#email.quoprimime">email.quoprimime</a>
  &#8226;   <a href="#http.cookies">http.cookies</a>
+ &#8226;   <a href="#i18n.formatters">i18n.formatters</a>
  &#8226;   <a href="#jinja2.sandbox">jinja2.sandbox</a>
  &#8226;   <a href="#jupyter_client.provisioning.provisioner_base">jupyter_client.provisioning.provisioner_base</a>
  &#8226;   <a href="#logging">logging</a>
@@ -64181,6 +64499,7 @@ imported by:
  &#8226;   <a href="#arrow.formatter">arrow.formatter</a>
  &#8226;   <a href="#arrow.locales">arrow.locales</a>
  &#8226;   <a href="#arrow.parser">arrow.parser</a>
+ &#8226;   <a href="#artifact.py">artifact.py</a>
  &#8226;   <a href="#ast">ast</a>
  &#8226;   <a href="#asttokens.asttokens">asttokens.asttokens</a>
  &#8226;   <a href="#asttokens.mark_tokens">asttokens.mark_tokens</a>
@@ -67602,6 +67921,15 @@ imported by:
  &#8226;   <a href="#executing._position_node_finder">executing._position_node_finder</a>
  &#8226;   <a href="#executing.executing">executing.executing</a>
  &#8226;   <a href="#functools">functools</a>
+ &#8226;   <a href="#i18n">i18n</a>
+ &#8226;   <a href="#i18n.config">i18n.config</a>
+ &#8226;   <a href="#i18n.custom_functions">i18n.custom_functions</a>
+ &#8226;   <a href="#i18n.formatters">i18n.formatters</a>
+ &#8226;   <a href="#i18n.loaders.loader">i18n.loaders.loader</a>
+ &#8226;   <a href="#i18n.loaders.yaml_loader">i18n.loaders.yaml_loader</a>
+ &#8226;   <a href="#i18n.resource_loader">i18n.resource_loader</a>
+ &#8226;   <a href="#i18n.translations">i18n.translations</a>
+ &#8226;   <a href="#i18n.translator">i18n.translator</a>
  &#8226;   <a href="#idna.core">idna.core</a>
  &#8226;   <a href="#idna.intranges">idna.intranges</a>
  &#8226;   <a href="#idna.uts46data">idna.uts46data</a>
@@ -71694,7 +72022,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#numpy.__config__">numpy.__config__</a>
+    <a href="#i18n.loaders.yaml_loader">i18n.loaders.yaml_loader</a>
+ &#8226;   <a href="#numpy.__config__">numpy.__config__</a>
  &#8226;   <a href="#yaml._yaml">yaml._yaml</a>
  &#8226;   <a href="#yaml.composer">yaml.composer</a>
  &#8226;   <a href="#yaml.constructor">yaml.constructor</a>
@@ -71897,7 +72226,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#yaml">yaml</a>
+    <a href="#i18n.loaders.yaml_loader">i18n.loaders.yaml_loader</a>
+ &#8226;   <a href="#yaml">yaml</a>
 
   </div>
 
