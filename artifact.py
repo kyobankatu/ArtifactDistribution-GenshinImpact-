@@ -115,15 +115,36 @@ class App(tk.CTk):
         # tk のフォームデザイン設定
         tk.set_appearance_mode("dark")  # Modes: system (default), light, dark
         tk.set_default_color_theme("blue")  # Themes: blue (default), dark-blue, green
-
+        
         # フォームサイズ設定
         self.geometry("1000x1200")
         self.title("Artifact distribution")
 
         # 行方向のマスのレイアウトを設定する。リサイズしたときに一緒に拡大したい行をweight 1に設定。
-        self.grid_rowconfigure(1, weight=1)
+        self.grid_rowconfigure(0, weight=1)
         # 列方向のマスのレイアウトを設定する
         self.grid_columnconfigure(0, weight=1)
+
+        self.scroll_frame = ScrollFrame(master=self, header_name="ScrollFrame", fg_color="transparent")
+        self.scroll_frame.grid(row=0, column=0, padx=20, pady=20, sticky="nsew")
+
+class ScrollFrame(tk.CTkScrollableFrame):
+    def __init__(self, *args, header_name="SubOptionSelect", **kwargs):
+        super().__init__(*args, **kwargs)
+        
+        self.fonts = (FONT_TYPE, 15)
+        self.header_name = header_name
+
+        self.calculator = Calculator()
+
+        # フォームのセットアップをする
+        self.setup_form()
+
+    def setup_form(self):
+        # 行方向のマスのレイアウトを設定する。リサイズしたときに一緒に拡大したい行をweight 1に設定。
+        # 列方向のマスのレイアウトを設定する
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=1)
 
         # 1つ目のフレームの設定
         self.option_frame = OptionSelect(master=self, header_name=i18n.t("lang.option_select_header"))
@@ -132,6 +153,8 @@ class App(tk.CTk):
         # 2つ目のフレームの設定
         self.distribution_frame = Distribution(master=self, header_name=i18n.t("lang.distribution_header"))
         self.distribution_frame.grid(row=1, column=0, padx=20, pady=20, sticky="ew")
+        
+
 
 class OptionSelect(tk.CTkFrame):
     def __init__(self, *args, header_name="OptionSelect", **kwargs):
@@ -145,7 +168,6 @@ class OptionSelect(tk.CTkFrame):
 
     def setup_form(self):
         # 行方向のマスのレイアウトを設定する。リサイズしたときに一緒に拡大したい行をweight 1に設定。
-        self.grid_rowconfigure(0, weight=1)
         # 列方向のマスのレイアウトを設定する
         self.grid_columnconfigure(0, weight=1)
 
@@ -234,7 +256,6 @@ class SubOptionSelect(tk.CTkFrame):
 
     def setup_form(self):
         # 行方向のマスのレイアウトを設定する。リサイズしたときに一緒に拡大したい行をweight 1に設定。
-        self.grid_rowconfigure(0, weight=1)
         # 列方向のマスのレイアウトを設定する
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
@@ -314,7 +335,6 @@ class Distribution(tk.CTkFrame):
 
     def setup_form(self):
         # 行方向のマスのレイアウトを設定する。リサイズしたときに一緒に拡大したい行をweight 1に設定。
-        self.grid_rowconfigure(0, weight=1)
         # 列方向のマスのレイアウトを設定する
         self.grid_columnconfigure(0, weight=1)
 
@@ -360,7 +380,6 @@ class OutPutArea(tk.CTkFrame):
 
     def setup_form(self):
         # 行方向のマスのレイアウトを設定する。リサイズしたときに一緒に拡大したい行をweight 1に設定。
-        self.grid_rowconfigure(0, weight=1)
         # 列方向のマスのレイアウトを設定する
         self.grid_columnconfigure(0, weight=1)
 
